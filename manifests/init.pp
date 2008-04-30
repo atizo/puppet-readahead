@@ -11,7 +11,7 @@ class readahead {
 }
 
 class readahead::base {
-    package{readhead:
+    package{readahead:
         ensure => present,
     }
 
