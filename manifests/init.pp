@@ -6,4 +6,21 @@
 
 
 # modules_dir { "readahead": }
-class readahead {}
+class readahead {
+    include readahead::base
+}
+
+class readahead::base {
+    package{readhead:
+        ensure => present,
+    }
+
+    service{readahead_early:
+        enable => true, 
+        require => Package[readahead],
+    }
+    service{readahead_later:
+        enable => true, 
+        require => Package[readahead],
+    }
+}
